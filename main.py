@@ -46,11 +46,11 @@ class NodeSet:  # arbitrary number of skills
 
     def validate(self) -> bool:
         # main skills cannot repeat
-        main_nodes: Set[Node] = set()
+        main_nodes: Set[int] = set()
         for node in self.nodes:
-            if node in main_nodes:
+            if node.main in main_nodes:
                 return False
-            main_nodes.add(node)
+            main_nodes.add(node.main)
 
         # every skill must be present twice
         skill_counts: List[int] = [0] * num_skills  # skill_count[skill index] = occurrences
@@ -96,6 +96,7 @@ if __name__ == '__main__':
                 # print(f'{", ".join(row)}')
                 line_count += 1
         print(f'Scanned {line_count - 1} nodes')
+        # TODO: skip repeat nodes for efficiency
 
     # hardcoded for 4 nodes (ie 6 skills)
     valid_sets: List[NodeSet] = []
