@@ -107,4 +107,4 @@ if __name__ == '__main__':
                     NS = NodeSet(4).add(nodes[i]).add(nodes[j]).add(nodes[k]).add(nodes[l])
                     if NS.validate():
                         valid_sets.append(NS)
-    print(valid_sets)
+    print("\n".join([str(s) for s in valid_sets]))
